@@ -1,6 +1,14 @@
+var url = window.location.href;
+var swLocation = '/twittor/sw.js';
+
 
 if (navigator.serviceWorker){
-	navigator.serviceWorker.register('sw.js');
+	
+	if (url.includes('localhost')){
+		swLocation = 'sw.js';;
+	}
+	
+	navigator.serviceWorker.register(swLocation);
 }
 
 
@@ -62,7 +70,7 @@ function logIn( ingreso ) {
         salirBtn.removeClass('oculto');
         timeline.removeClass('oculto');
         avatarSel.addClass('oculto');
-        modalAvatar.attr('src', 'img/avatars1/' + usuario + '.jpg');
+        modalAvatar.attr('src', 'img/avatars/' + usuario + '.jpg');
     } else {
         nuevoBtn.addClass('oculto');
         salirBtn.addClass('oculto');
